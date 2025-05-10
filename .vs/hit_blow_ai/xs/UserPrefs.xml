@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{674553D5-E4CD-F47B-3A35-AAFAD9506A7D}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/guess system.cs" Line="154" Column="44" />
+      <File FileName="Assets/Scripts/judge system.cs" Line="12" Column="28" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="60" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="hit_blow_ai" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="bab204b0-e85c-469a-b94d-0296bb4db7d8" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
