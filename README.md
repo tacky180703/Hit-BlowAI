@@ -27,4 +27,4 @@ AIに関するものを作るという課題で制作したものです。
 したがって、今の位置でその数字が正解である可能性は排除できます
 
 このようにして可能性を排除して予想していることがわかり、この予想の仕方をプログラムすれば自分と同じ予想の仕方をするAIと対戦できると思いました。
-(実際のコードは[View Diagram](Assets/Scripts/AIGuessSystem.cs))
+(実際のコードは[AIGuessSystem](Assets/Scripts/AIGuessSystem.cs))
