@@ -1,7 +1,10 @@
 # Hit-BlowAI
 
 制作日:2024.1  
-AI演習課題作品
+AI演習課題作品  
+![Unity](https://img.shields.io/badge/Unity-black?logo=unity&logoColor=white)
+
+---
 
 ## はじめに
 AIに関するものを作るという課題で制作したものです。
