@@ -4,11 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum TurnState{
-    Player,
-    Bot,
-}
-
 public class GameManager : MonoBehaviour
 {
     // private int turnIndex = 0;
@@ -97,7 +92,6 @@ public class GameManager : MonoBehaviour
     //         selectNums[i] = 0;
     //     }
     // }
-    private int turnIndex = 0;
 
     [SerializeField]
     private Button[] numButtons;
@@ -105,78 +99,10 @@ public class GameManager : MonoBehaviour
     private GameObject[] results;
     [SerializeField]
     private Sprite[] numIcons;
-    
-    private int[] guessNums = new int[] {0, 0, 0};
-    private int guessDigitIndex = 0;
 
-    private TurnState turnState = TurnState.Player; 
-
-    private void Start(){
+    private void Start()
+    {
         Debug.Log("GameStart");
-        Init();
-        int correctNum = GenerateRandomNum();
-        Debug.Log("正解:" + correctNum);
-
-        Debug.Log(turnState);
-
-        if(turnState == TurnState.Player){
-            
-        }
-    }
-
-    private void Init(){
-        for(int i = 0; i < numButtons.Length; i++){
-            int index = i;
-            numButtons[i].onClick.AddListener(()=>OnButtonClicked(index));
-        }
-    }
-
-    //各ボタンが押された時の処理を書く
-    private void OnButtonClicked(int index)
-    {
-        if (turnState == TurnState.Player)
-        {
-            Transform slot = results[turnIndex].transform.GetChild(guessDigitIndex);
-            Image numIcon = slot.GetComponent<Image>();
-            numIcon.sprite = numIcons[index];
-            guessNums[guessDigitIndex] = index + 1;
-            if (guessDigitIndex < 2)
-            {
-                guessDigitIndex++;
-            }
-            else
-            {
-                NextTurn();
-            }
-        }
-    }
-
-    private void NextTurn()
-    {
-        turnIndex++;
-        guessDigitIndex = 0;
-        turnState = (turnState == TurnState.Player) ? TurnState.Bot : TurnState.Player;
-        Debug.Log("Turn:" + turnState);
-    }
-
-    private int GenerateRandomNum()
-    {
-        List<int> digits = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        Shuffle(digits);
-        int a = digits[0];
-        int b = digits[1];
-        int c = digits[2];
-        return a * 100 + b * 10 + c;
-    }
-
-    private void Shuffle(List<int> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            int temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
-        }
+        // Init();
     }
 }
