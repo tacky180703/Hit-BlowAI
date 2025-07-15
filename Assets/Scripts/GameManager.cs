@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private ResultUIManager resultUIManager;
+    private void Start()
+    {
+        Debug.Log("GameStart");
+        // Init();
+    }
+
+    public void FinishGame(int[] answer)
+    {
+        resultUIManager.ShowResult(answer);
+    }
     // private int turnIndex = 0;
     // private int guessCandidateIndex = 0;
     // private int[] selectNums = new int[] { 0, 0, 0 };
@@ -92,17 +104,4 @@ public class GameManager : MonoBehaviour
     //         selectNums[i] = 0;
     //     }
     // }
-
-    [SerializeField]
-    private Button[] numButtons;
-    [SerializeField]
-    private GameObject[] results;
-    [SerializeField]
-    private Sprite[] numIcons;
-
-    private void Start()
-    {
-        Debug.Log("GameStart");
-        // Init();
-    }
 }

@@ -6,6 +6,9 @@ using UnityEngine;
 public class JudgeSystem : MonoBehaviour
 {
     int[] answer = new int[3];
+    public int[,] results = new int[10, 3];
+    [SerializeField]
+    private TurnManager turnManager;
 
     private void Start()
     {
@@ -13,14 +16,19 @@ public class JudgeSystem : MonoBehaviour
         Debug.Log("正解:" + answer[0] + answer[1] + answer[2]);
     }
 
-    public int[] Judge(int[] guessNums)
+    public int[] Judge(int[] guessNums, int[] target = null)
     {
+        if (target == null)
+        {
+            target = answer;
+        }
+
         int hit = 0;
         int blow = 0;
 
         for (int i = 0; i < 3; i++)
         {
-            if (guessNums[i]+1 == answer[i])
+            if (guessNums[i] == target[i])
             {
                 hit++;
             }
@@ -28,15 +36,21 @@ public class JudgeSystem : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            if (guessNums[i]+1 != answer[i] && answer.Contains(guessNums[i]+1))
+            if (guessNums[i] != target[i] && target.Contains(guessNums[i]))
             {
                 blow++;
             }
         }
 
         int none = 3 - (hit + blow);
-        Debug.Log(hit+"hit "+blow+"blow");
         return new int[] { hit, blow, none };
+    }
+
+    public void SaveResult(int[] result)
+    {
+        results[turnManager.turnIndex,0] = result[0];
+        results[turnManager.turnIndex,1] = result[1];
+        results[turnManager.turnIndex,2] = result[2];
     }
 
 

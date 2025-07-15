@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private GameManager gameManager;
+    [SerializeField]
     private TurnManager turnManager;
 
     [SerializeField]
@@ -14,6 +16,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private JudgeSystem judgeSystem;
+
+    [SerializeField]
+    private ScrollSlot scrollSystem;
+
+    [SerializeField]
+    private GuessSystem guessSystem;
 
     private int?[] slotValues;
     void Start()
@@ -24,6 +32,7 @@ public class PlayerController : MonoBehaviour
     //数字入力に関する処理
     public void OnNumberButtonClicked(int index)
     {
+        scrollSystem.MoveScrollbar();
         if (turnManager.turnState == TurnState.Player)
         {
             //使われていればスロットを空ける
@@ -59,10 +68,21 @@ public class PlayerController : MonoBehaviour
     {
         if (IsAllSlotsFilled())
         {
-            judgeSystem.Judge(slotValues.Select(x => x.Value).ToArray());
-            turnManager.NextTurn();
-            slotValues = new int?[3];
-            Debug.Log("次のターン");
+            int[] guess = slotValues.Select(x => x.Value+1).ToArray();
+            int[] result = judgeSystem.Judge(guess);
+            if (result[0] == 3)
+            {
+                gameManager.FinishGame(guess);
+            }
+            else
+            {
+                Debug.Log(result[0] + "hit " + result[1] + "blow");
+                guessSystem.UpdateCandidates(guess, result);
+                judgeSystem.SaveResult(result);
+                turnManager.NextTurn();
+                slotValues = new int?[3];
+                Debug.Log("次のターン");
+            }
         }
         else
         {
